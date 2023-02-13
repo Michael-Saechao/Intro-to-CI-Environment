@@ -1,1 +1,15 @@
-
+ name: Build CI Enviroment
+ 
+ on:
+   push:
+      branches: [ main ]
+   pull_request:
+       branches: [ main ]
+       
+   build:
+     needs: install
+     runs-on: unbuntu-latest
+     steps:
+       - uses: actions/checkout@v3
+       - name: Build CI Environment
+         run: g++ main.cpp -std=c++17 -Wall -Wextra -Werror -o intro-to-CI-Enironment
